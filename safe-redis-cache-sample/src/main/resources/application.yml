@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: safe-redis-cache-sample
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# Our starter's properties will go here once you write SafeRedisCacheProperties (Lesson 1).
