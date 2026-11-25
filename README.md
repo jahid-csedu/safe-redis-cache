@@ -118,4 +118,8 @@ java -jar safe-redis-cache-sample/target/safe-redis-cache-sample-0.1.0-SNAPSHOT.
 
 ## Why I'm building this
 
-I wrote the three stories above with plain Spring Data Redis code. Copying those fixes into a real project still takes work, so I wanted readers to have something they can add as one dependency. It's also my first Spring Boot starter, built in the open while I learn how starters work, so the commit history doubles as a record of that.
+I wrote the three stories above with plain Spring Data Redis code. Copying those fixes into a real project still takes work, so I wanted readers to have something they can add as one dependency.
+
+## License
+
+Licensed under the [Apache License, Version 2.0](LICENSE). It's also my first Spring Boot starter, built in the open while I learn how starters work, so the commit history doubles as a record of that.

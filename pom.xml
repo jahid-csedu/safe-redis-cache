@@ -15,6 +15,15 @@
   <name>Safe Redis Cache (parent)</name>
   <description>Spring Boot starter that protects a Redis cache from avalanche, stampede and penetration.</description>
 
+  <!-- Inherited by every module; Maven Central requires license info in each published pom -->
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <modules>
     <module>safe-redis-cache-spring-boot-autoconfigure</module>
     <module>safe-redis-cache-spring-boot-starter</module>
