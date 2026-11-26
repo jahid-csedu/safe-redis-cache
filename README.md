@@ -83,7 +83,7 @@ safe-redis-cache:
         enabled: false
 ```
 
-Right now a per-cache block falls back to the built-in defaults for anything it doesn't set. Making it fall back to your `defaults` block instead is the next step on the roadmap.
+A per-cache block only needs the values that differ. Anything it leaves out comes from your `defaults` block, field by field, and from the built-in values when `defaults` doesn't set it either. Invalid values, such as a zero TTL or a negative jitter, stop the app at startup with a message naming the property.
 
 ## Project layout
 
@@ -108,7 +108,8 @@ java -jar safe-redis-cache-sample/target/safe-redis-cache-sample-0.1.0-SNAPSHOT.
 ## Roadmap
 
 - [x] Multi-module starter skeleton, auto-configuration and typed properties
-- [ ] Per-cache settings that fall back to `defaults`, and a `CacheManager` built from them
+- [x] Per-cache settings that fall back to `defaults`, validated at startup
+- [ ] A `CacheManager` built from those settings
 - [ ] Avalanche: TTL jitter
 - [ ] Stampede, layer 1: local single-flight
 - [ ] Stampede, layer 2: Redisson lock with a second check, tested across two app instances

@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Duration;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
@@ -16,12 +17,14 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner;
  * you give it. No Redis, no web server, it runs in milliseconds. It's the standard way
  * to test a starter.
  */
+@DisplayName("Safe Redis Cache properties")
 class SafeRedisCachePropertiesTest {
 
     private final ApplicationContextRunner runner = new ApplicationContextRunner()
             .withConfiguration(AutoConfigurations.of(SafeRedisCacheAutoConfiguration.class));
 
     @Test
+    @DisplayName("Built-in defaults apply when nothing is configured")
     void builtInDefaultsApplyWhenNothingIsConfigured() {
         runner.run(context -> {
             SafeRedisCacheProperties props = context.getBean(SafeRedisCacheProperties.class);
@@ -41,6 +44,7 @@ class SafeRedisCachePropertiesTest {
     }
 
     @Test
+    @DisplayName("Defaults can be changed from properties")
     void defaultsCanBeChangedFromProperties() {
         runner.withPropertyValues(
                         "safe-redis-cache.defaults.ttl=1h",
@@ -56,6 +60,7 @@ class SafeRedisCachePropertiesTest {
     }
 
     @Test
+    @DisplayName("Each cache name can have its own settings")
     void eachCacheNameCanHaveItsOwnSettings() {
         runner.withPropertyValues(
                         "safe-redis-cache.caches.products.ttl=30m",
@@ -70,6 +75,7 @@ class SafeRedisCachePropertiesTest {
     }
 
     @Test
+    @DisplayName("The whole starter switches off with one property")
     void theWholeStarterSwitchesOffWithOneProperty() {
         runner.withPropertyValues("safe-redis-cache.enabled=false")
                 .run(context -> assertThat(context).doesNotHaveBean(SafeRedisCacheProperties.class));
